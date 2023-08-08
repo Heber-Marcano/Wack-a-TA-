@@ -46,6 +46,10 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
+userSchema.virtual("gamesPlayed").get(function(){
+    return this.games.length
+})
+
 const User = model('user', userSchema);
 
 module.exports = User;
